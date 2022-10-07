@@ -1,0 +1,131 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board .top-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.game-board .top-block .title {
+  font-size: 40px;
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+  color: #756e66;
+}
+
+.game-board .top-block .panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-board .top-block .score {
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px 20px;
+  background-color: #b9ada1;
+  color: #ffffff;
+}
+
+.game-board .top-block .new-game-button {
+  background-color: #8c7b68;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.game-board .game-playground {
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #b9ada1;
+  border: 8px solid #b9ada1;
+  border-radius: 8px;
+  position: relative;
+}
+
+.game-board .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  transition: 100ms ease-in-out;
+}
+
+.game-board .win {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  transition: 100ms ease-in-out;
+}
+
+.game-board .lose {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: bold;
+  color: red;
+  transition: 100ms ease-in-out;
+}
+
+.game-board .grid {
+  border: 8px solid #b9ada1;
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cac1b5;
+  border-radius: 8px;
+}
+
+.game-board .cell {
+  --x: 1;
+  --y: 1;
+  --gap: 8;
+  position: absolute;
+  font-size: 32px;
+  font-weight: 700;
+  color: #776e65;
+  width: calc(25% - var(--gap) * 2px);
+  aspect-ratio: 1 / 1;
+  background-color: #ece1cc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: calc(var(--x) * 25% + var(--gap) * 1px);
+  top: calc(var(--y) * 25% + var(--gap) * 1px);
+  animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
