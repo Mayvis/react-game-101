@@ -18,18 +18,18 @@ const Game2048: FC = () => {
   const [loading, setLoading] = useState(true)
   const [game, setGame] = useState<Cell[]>(handleGenerateGame())
   const score = Math.max(...game.map(cell => cell.value))
+  const emptyCells = game.filter(cell => cell.value === 0)
   const win = score >= 2048
-  const lose = game.filter(cell => cell.value === 0).length === 0 && !win
+  const lose = emptyCells.length === 0 && !win
 
   // generate random cells
   const handleGenerateCells = (count: number) => {
     indexArrRef.current = []
 
     while (indexArrRef.current.length < count) {
-      const emptyCells = game.filter(cell => cell.value === 0)
       const index = handleGenerateRandomIndex(emptyCells.length)
 
-      if (!indexArrRef.current.includes(index)) {
+      if (!indexArrRef.current.includes(index) && game[index].value === 0) {
         indexArrRef.current.push(index)
       }
     }
@@ -84,6 +84,8 @@ const Game2048: FC = () => {
       default:
         break
     }
+
+    handleGenerateCells(1)
   }
 
   const handleMove = (cells: Cell[][]) => {
